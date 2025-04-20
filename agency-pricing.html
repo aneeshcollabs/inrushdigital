@@ -1,0 +1,41 @@
+<li><a href="pricing.html">Pricing & Plans</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li>Email: info@youragency.com</li>
+                    <li>Phone: (123) 456-7890</li>
+                    <li>Address: 123 Business Ave, City, State</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Your Digital Marketing Agency. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                    item.querySelector('span').textContent = '+';
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                    button.querySelector('span').textContent = '-';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
