@@ -144,31 +144,135 @@
             color: var(--dark);
         }
         
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 25px;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: var(--secondary);
-        }
-        
-        .mobile-menu {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
+        nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    position: relative;
+    margin-left: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 600;
+    padding: 10px 0;
+    position: relative;
+    transition: color 0.3s;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary);
+    transition: width 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--secondary);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+   .mobile-menu {
+    display: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 10px;
+}
+
+.mobile-menu .hamburger {
+    width: 30px;
+    height: 3px;
+    background-color: var(--primary);
+    position: relative;
+    transition: all 0.3s;
+}
+
+.mobile-menu .hamburger::before,
+.mobile-menu .hamburger::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: var(--primary);
+    transition: all 0.3s;
+}
+
+.mobile-menu .hamburger::before {
+    top: -8px;
+}
+
+.mobile-menu .hamburger::after {
+    top: 8px;
+}
+
+.mobile-menu.active .hamburger {
+    background-color: transparent;
+}
+
+.mobile-menu.active .hamburger::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.mobile-menu.active .hamburger::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+@media (max-width: 992px) {
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background-color: white;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s;
+        z-index: 1000;
+        padding-top: 80px;
+    }
+
+    nav.active {
+        right: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    nav ul li {
+        margin: 0 0 15px 0;
+    }
+
+    nav ul li a {
+        padding: 10px;
+        display: block;
+    }
+
+    .mobile-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
         
         /* Hero Section */
         .hero {
@@ -731,41 +835,41 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <img src="https://via.placeholder.com/50x50" alt="IVF Clinic Logo">
-                <div class="logo-text">
-                    <h1>Advanced IVF</h1>
-                    <p>Fertility & Genetics Center</p>
-                </div>
+   <header>
+    <div class="container header-container">
+        <div class="logo">
+            <img src="https://via.placeholder.com/50x50" alt="IVF Clinic Logo">
+            <div class="logo-text">
+                <h1>Advanced IVF</h1>
+                <p>Fertility & Genetics Center</p>
             </div>
-            
-            <div class="header-contact">
-                <i class="fas fa-phone-alt"></i>
-                <div class="contact-text">
-                    <h3>Call Us 24/7</h3>
-                    <p>+971 4 123 4567</p>
-                </div>
-            </div>
-            
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-            
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Treatments</a></li>
-                    <li><a href="#">Success Rates</a></li>
-                    <li><a href="#">Doctors</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#" class="btn btn-primary">Book Consultation</a></li>
-                </ul>
-            </nav>
         </div>
-    </header>
+        
+        <div class="header-contact">
+            <i class="fas fa-phone-alt"></i>
+            <div class="contact-text">
+                <h3>Call Us 24/7</h3>
+                <p>+971 4 123 4567</p>
+            </div>
+        </div>
+        
+        <div class="mobile-menu">
+            <div class="hamburger"></div>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Treatments</a></li>
+                <li><a href="#">Success Rates</a></li>
+                <li><a href="#">Doctors</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#" class="btn btn-primary">Book Consultation</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1108,4 +1212,56 @@
                     <h3>Contact Us</h3>
                     <ul class="footer-contact">
                         <li>
-                            <i class="fas fa-map-marker-alt"></i
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Healthcare Road, Dubai Healthcare City, Dubai, UAE</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+971 4 123 4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@advancedivf.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Sat: 8:00 AM - 8:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Advanced IVF Fertility Center. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const nav = document.querySelector('nav');
+
+    mobileMenu.addEventListener('click', function() {
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+        
+        // Toggle body scroll when menu is open
+        if (nav.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            nav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+</script>
+</body>
+</html>
