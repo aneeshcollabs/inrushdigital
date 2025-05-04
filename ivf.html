@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced IVF Fertility Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #2a5c8d;
+            --secondary: #e67e22;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #d35400;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
+        }
+        
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo-text {
+            margin-left: 10px;
+        }
+        
+        .logo-text h1 {
+            font-size: 22px;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .header-contact {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-contact i {
+            font-size: 24px;
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+        
+        .contact-text h3 {
+            font-size: 16px;
+            color: var(--primary);
+        }
+        
+        .contact-text p {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-item i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .stat-item h3 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .stat-item p {
+            font-size: 18px;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .service-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .service-content a {
+            color: var(--secondary);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-content a i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .service-content a:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Why Choose Us */
+        .why-us {
+            padding: 80px 0;
+        }
+        
+        .why-us-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-box {
+            display: flex;
+            margin-bottom: 30px;
+        }
+        
+        .feature-icon {
+            flex: 0 0 60px;
+            height: 60px;
+            background-color: rgba(42, 92, 141, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--primary);
+            font-size: 24px;
+        }
+        
+        .feature-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .feature-content p {
+            color: #666;
+        }
+        
+        /* Doctors Section */
+        .doctors {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .doctors-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .doctor-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .doctor-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .doctor-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .doctor-info {
+            padding: 20px;
+        }
+        
+        .doctor-info h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .doctor-info p {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .doctor-info .social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .doctor-info .social a {
+            color: var(--primary);
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        .doctor-info .social a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(rgba(42, 92, 141, 0.9), rgba(42, 92, 141, 0.9)), url('https://images.unsplash.com/photo-1573497491765-dccce02b29df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+        
+        .testimonials .section-title h2,
+        .testimonials .section-title p {
+            color: white;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-item {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .testimonial-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .testimonial-item p {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-item h4 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-item span {
+            color: #ddd;
+        }
+        
+        /* Blog Section */
+        .blog {
+            padding: 80px 0;
+        }
+        
+        .blog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .blog-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .blog-card:hover .blog-img img {
+            transform: scale(1.1);
+        }
+        
+        .blog-content {
+            padding: 20px;
+        }
+        
+        .blog-date {
+            display: inline-block;
+            background-color: rgba(230, 126, 34, 0.1);
+            color: var(--secondary);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .blog-content h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .blog-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .blog-content a {
+            color: var(--secondary);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .blog-content a i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .blog-content a:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(rgba(42, 92, 141, 0.8), rgba(42, 92, 141, 0.8)), url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #ddd;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            .logo, .header-contact {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav {
+                display: none;
+            }
+            
+            .hero {
+                height: auto;
+                padding: 120px 0 60px;
+            }
+            
+            .hero-content {
+                text-align: center;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .stat-item {
+                min-width: 150px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .stat-item {
+                min-width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .stat-item:last-child {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/50x50" alt="IVF Clinic Logo">
+                <div class="logo-text">
+                    <h1>Advanced IVF</h1>
+                    <p>Fertility & Genetics Center</p>
+                </div>
+            </div>
+            
+            <div class="header-contact">
+                <i class="fas fa-phone-alt"></i>
+                <div class="contact-text">
+                    <h3>Call Us 24/7</h3>
+                    <p>+971 4 123 4567</p>
+                </div>
+            </div>
+            
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Treatments</a></li>
+                    <li><a href="#">Success Rates</a></li>
+                    <li><a href="#">Doctors</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#" class="btn btn-primary">Book Consultation</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Journey to Parenthood Starts Here</h1>
+                <p>With the highest IVF success rates in the region, our world-class fertility specialists are ready to help you build the family you've always dreamed of.</p>
+                <div class="hero-btns">
+                    <a href="#" class="btn btn-primary">Free First Consultation</a>
+                    <a href="#" class="btn btn-outline">View Success Rates</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container stats-container">
+            <div class="stat-item">
+                <i class="fas fa-baby"></i>
+                <h3>5,000+</h3>
+                <p>Successful Pregnancies</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-percentage"></i>
+                <h3>72%</h3>
+                <p>IVF Success Rate</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-user-md"></i>
+                <h3>20+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-smile"></i>
+                <h3>98%</h3>
+                <p>Patient Satisfaction</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Fertility Treatments</h2>
+                <p>We offer a comprehensive range of fertility treatments using the latest technology and personalized care plans.</p>
+            </div>
+            
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="IVF Treatment">
+                    </div>
+                    <div class="service-content">
+                        <h3>IVF Treatment</h3>
+                        <p>In vitro fertilization (IVF) is a process where eggs are combined with sperm outside the body in our advanced laboratory.</p>
+                        <a href="#">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="ICSI">
+                    </div>
+                    <div class="service-content">
+                        <h3>ICSI</h3>
+                        <p>Intracytoplasmic sperm injection (ICSI) involves injecting a single sperm directly into an egg to facilitate fertilization.</p>
+                        <a href="#">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Egg Freezing">
+                    </div>
+                    <div class="service-content">
+                        <h3>Egg Freezing</h3>
+                        <p>Preserve your fertility by freezing your eggs at their healthiest for future use through our vitrification technology.</p>
+                        <a href="#">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our IVF Center</h2>
+                <p>We combine medical excellence with compassionate care to give you the best chance at successful conception.</p>
+            </div>
+            
+            <div class="why-us-container">
+                <div>
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Highest Success Rates</h3>
+                            <p>Our clinic consistently achieves pregnancy rates above national averages through advanced techniques.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>State-of-the-Art Lab</h3>
+                            <p>Our embryology laboratory is equipped with the latest technology for optimal embryo development.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Expert Specialists</h3>
+                            <p>Our team includes internationally trained reproductive endocrinologists with decades of experience.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Personalized Care</h3>
+                            <p>Every treatment plan is customized to your unique medical history and fertility challenges.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Affordable Packages</h3>
+                            <p>We offer transparent pricing and financing options to make treatment accessible.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>24/7 Support</h3>
+                            <p>Our patient care team is available around the clock to address your concerns.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="IVF Clinic" style="width:100%; border-radius:10px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section class="doctors">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Fertility Specialists</h2>
+                <p>Our team of reproductive endocrinologists, embryologists and nurses are dedicated to helping you achieve your dream of parenthood.</p>
+            </div>
+            
+            <div class="doctors-container">
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dr. Sarah Johnson">
+                    </div>
+                    <div class="doctor-info">
+                        <h3>Dr. Sarah Johnson</h3>
+                        <p>Reproductive Endocrinologist</p>
+                        <p>20+ years experience in IVF treatment</p>
+                        <div class="social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dr. Michael Chen">
+                    </div>
+                    <div class="doctor-info">
+                        <h3>Dr. Michael Chen</h3>
+                        <p>Embryology Director</p>
+                        <p>PhD in Reproductive Biology</p>
+                        <div class="social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dr. Amina Al-Mansoori">
+                    </div>
+                    <div class="doctor-info">
+                        <h3>Dr. Amina Al-Mansoori</h3>
+                        <p>Fertility Specialist</p>
+                        <p>Specializing in PCOS treatments</p>
+                        <div class="social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Patient Success Stories</h2>
+                <p>Hear from couples who have successfully conceived with our help.</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-item">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Patient">
+                    <p>"After 5 years of trying and failed IVF attempts elsewhere, we came to Advanced IVF. The care and expertise we received was exceptional, and we're now proud parents of twins!"</p>
+                    <h4>Emma & James Wilson</h4>
+                    <span>IVF Patients, 2022</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>Fertility Blog & News</h2>
+                <p>Stay informed with the latest in fertility research, treatment options and clinic updates.</p>
+            </div>
+            
+            <div class="blog-container">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1579165466741-920c5c2450e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="IVF Success">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">June 15, 2023</span>
+                        <h3>5 Factors That Affect IVF Success Rates</h3>
+                        <p>Understanding the key elements that can influence your chances of successful conception through IVF treatment.</p>
+                        <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Egg Freezing">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">May 28, 2023</span>
+                        <h3>Egg Freezing: What You Need to Know</h3>
+                        <p>A comprehensive guide to the process, costs, and considerations for women thinking about preserving their fertility.</p>
+                        <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Male Fertility">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">April 12, 2023</span>
+                        <h3>Improving Male Fertility Naturally</h3>
+                        <p>Evidence-based lifestyle changes and supplements that can enhance sperm quality and male reproductive health.</p>
+                        <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Start Your Fertility Journey?</h2>
+            <p>Schedule a consultation with one of our specialists to discuss your options and create a personalized treatment plan.</p>
+            <a href="#" class="btn btn-primary">Book Your Appointment Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <p>Advanced IVF Fertility Center is a leading reproductive medicine clinic dedicated to helping couples and individuals achieve their dream of parenthood.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Treatments</a></li>
+                        <li><a href="#">Success Rates</a></li>
+                        <li><a href="#">Doctors</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Treatments</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">IVF Treatment</a></li>
+                        <li><a href="#">ICSI</a></li>
+                        <li><a href="#">Egg Freezing</a></li>
+                        <li><a href="#">Fertility Testing</a></li>
+                        <li><a href="#">Male Infertility</a></li>
+                        <li><a href="#">Donor Programs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i
