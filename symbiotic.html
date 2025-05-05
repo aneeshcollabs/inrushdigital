@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbiotic Agro Sciences | Agricultural Biological Solutions</title>
+    <style>
+        :root {
+            --primary-green: #e8f5e9;
+            --secondary-green: #c8e6c9;
+            --accent-green: #81c784;
+            --dark-green: #2e7d32;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--dark-green);
+        }
+        
+        .logo-subtext {
+            font-size: 14px;
+            color: var(--text-light);
+            display: block;
+            margin-top: -5px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-green);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), 
+                        url('https://www.symbioticagrosciences.com/wp-content/uploads/2021/06/hero-background.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            color: var(--dark-green);
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-green);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--primary-green);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: var(--dark-green);
+            margin-bottom: 50px;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            margin-top: 0;
+            color: var(--dark-green);
+        }
+        
+        .product-info p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        /* Technology Section */
+        .technology {
+            padding: 80px 0;
+            background-color: var(--secondary-green);
+        }
+        
+        .tech-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .tech-content p {
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: var(--primary-green);
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-green);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://www.symbioticagrosciences.com/wp-content/uploads/2021/06/symbiotic-logo.png" alt="Symbiotic Agro Sciences Logo">
+                <div>
+                    <div class="logo-text">SYMBIOTIC AGRO SCIENCES</div>
+                    <span class="logo-subtext">Agricultural Biological Solutions</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#technology">Technology</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Innovative Biological Solutions for Agriculture</h1>
+            <p>Harnessing the power of nature to deliver sustainable, effective solutions for modern agricultural challenges.</p>
+            <a href="#products" class="btn">Explore Our Products</a>
+        </div>
+    </section>
+    
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Symbiotic Agro Sciences</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Symbiotic Agro Sciences is a research-driven company dedicated to developing innovative biological solutions for agriculture. Our mission is to provide farmers with effective, sustainable tools that enhance crop productivity while protecting the environment.</p>
+                    <p>With a team of experienced scientists and agronomists, we combine cutting-edge research with practical field experience to create products that deliver real results. Our solutions are designed to work in harmony with nature, promoting soil health and plant resilience.</p>
+                    <p>Founded in 2015, Symbiotic Agro Sciences has quickly established itself as a leader in the agricultural biologicals sector, with products now used across North America and internationally.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://www.symbioticagrosciences.com/wp-content/uploads/2021/06/about-image.jpg" alt="Farm field">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://www.symbioticagrosciences.com/wp-content/uploads/2021/06/product-1.jpg" alt="BioStimulant Plus">
+                    </div>
+                    <div class="product-info">
+                        <h3>BioStimulant Plus</h3>
+                        <p>A powerful plant growth promoter that enhances nutrient uptake and improves stress tolerance. Formulated with beneficial microbes and natural plant extracts.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://www.symbioticagrosciences.com/wp-content/uploads/2021/06/product-2.jpg" alt="RootGuard BioFungicide">
+                    </div>
+                    <div class="product-info">
+                        <h3>RootGuard BioFungicide</h3>
+                        <p>Our proprietary fungal strain provides effective protection against soil-borne pathogens while promoting root development and plant vigor.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://www.symbioticagrosciences.com/wp-content/uploads/2021/06/product-3.jpg" alt="NitroFix Microbial Inoculant">
+                    </div>
+                    <div class="product-info">
+                        <h3>NitroFix Microbial Inoculant</h3>
+                        <p>Advanced nitrogen-fixing bacteria that reduce fertilizer requirements while improving plant growth and yield potential.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="technology" class="technology">
+        <div class="container">
+            <h2 class="section-title">Our Technology</h2>
+            <div class="tech-content">
+                <p>At Symbiotic Agro Sciences, we combine advanced microbiology with innovative formulation technology to create products that are both highly effective and easy to use. Our proprietary strain development and fermentation processes ensure consistent, high-quality biological products.</p>
+                <p>We invest heavily in research and development, with state-of-the-art laboratories and field testing programs that validate product performance under real-world conditions. Our scientific team is constantly exploring new microbial strains and biological solutions to address emerging agricultural challenges.</p>
+                <a href="#" class="btn">Our Research</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>We'd love to hear from you. Whether you're a grower interested in our products, a distributor looking to partner with us, or a researcher interested in collaboration, please reach out.</p>
+                    
+                    <h3>Contact Information</h3>
+                    <p><strong>Address:</strong> 123 Agricultural Way, Research Park, CA 94025</p>
+                    <p><strong>Phone:</strong> (555) 123-4567</p>
+                    <p><strong>Email:</strong> info@symbioticagrosciences.com</p>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="#">Our Company</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Research & Development</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#">BioStimulants</a></li>
+                        <li><a href="#">BioFungicides</a></li>
+                        <li><a href="#">Microbial Inoculants</a></li>
+                        <li><a href="#">All Products</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Technical Papers</a></li>
+                        <li><a href="#">Application Guides</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Distributor Login</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Symbiotic Agro Sciences. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
