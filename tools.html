@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolMatrix - Ultimate Tools Directory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #ffffff;
+            --secondary-bg: #f8f9fa;
+            --text-color: #000000;
+            --accent-color: #00c853;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .dark-mode {
+            --primary-bg: #121212;
+            --secondary-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --accent-color: #00e676;
+            --card-shadow: 0 4px 12px rgba(0, 200, 83, 0.1);
+        }
+
+        body {
+            font-family: 'Instrument Sans', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: var(--secondary-bg);
+            padding: 40px 30px;
+            border-right: 1px solid rgba(0, 200, 83, 0.2);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0 0 40px 0;
+            background: linear-gradient(90deg, #00c853, #00e676);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
+            text-align: center;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu li {
+            margin-bottom: 12px;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            display: block;
+            font-size: 1.05rem;
+        }
+
+        .nav-menu li a:hover,
+        .nav-menu li a.active {
+            background-color: rgba(0, 200, 83, 0.1);
+            color: var(--accent-color);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 50px;
+            overflow-y: auto;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .tool-card {
+            background-color: var(--secondary-bg);
+            border-radius: 14px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 200, 83, 0.15);
+        }
+
+        .tool-card h3 {
+            margin: 0 0 20px 0;
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .tool-card p {
+            font-size: 1rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .tool-card a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: 2px solid var(--accent-color);
+            transition: all 0.2s ease;
+            margin-top: auto;
+        }
+
+        .tool-card a:hover {
+            background-color: rgba(0, 200, 83, 0.1);
+            transform: scale(1.05);
+        }
+
+        .view-all {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .view-all a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            border-radius: 30px;
+            background-color: rgba(0, 200, 83, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .view-all a:hover {
+            background-color: rgba(0, 200, 83, 0.2);
+        }
+
+        .view-all a::after {
+            content: '→';
+            margin-left: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .view-all a:hover::after {
+            transform: translateX(5px);
+        }
+
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 200, 83, 0.2);
+            margin-top: 60px;
+        }
+
+        .theme-toggle {
+            background-color: var(--secondary-bg);
+            border: 2px solid var(--accent-color);
+            color: var(--text-color);
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Instrument Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(0, 200, 83, 0.1);
+        }
+
+        @media (max-width: 1200px) {
+            .sidebar {
+                width: 240px;
+                padding: 30px 20px;
+            }
+            
+            .main-content {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 25px;
+            }
+            
+            .main-content {
+                padding: 35px 25px;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+            }
+            
+            .section-title {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .tool-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar Navigation -->
+        <aside class="sidebar">
+            <h1 class="logo">ToolMatrix</h1>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#startup-tools" class="active">Startup Tools</a></li>
+                    <li><a href="#webhosting">WebHosting</a></li>
+                    <li><a href="#marketing-tools">Digital Marketing</a></li>
+                    <li><a href="#ai-tools">AI Tools</a></li>
+                    <li><a href="#productivity-tools">Productivity</a></li>
+                    <li><a href="#design-tools">Design Tools</a></li>
+                    <li><a href="#development-tools">Development</a></li>
+                    <li><a href="#seo-tools">SEO Tools</a></li>
+                    <li><a href="#analytics-tools">Analytics</a></li>
+                    <li><a href="#collaboration-tools">Collaboration</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Startup Tools Section -->
+            <section id="startup-tools">
+                <h2 class="section-title">Startup Tools</h2>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <h3>Stripe Atlas</h3>
+                        <p>Incorporate your startup and manage all legal operations in one place with automated compliance.</p>
+                        <a href="https://stripe.com/atlas" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Gust</h3>
+                        <p>Startup funding platform that connects entrepreneurs with angel investors and accelerators.</p>
+                        <a href="https://gust.com" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Clerky</h3>
+                        <p>Automated legal paperwork for startups, fundraising, and compliance documents.</p>
+                        <a href="https://www.clerky.com" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>AngelList</h3>
+                        <p>Platform for startup jobs, investing, and fundraising with thousands of startups.</p>
+                        <a href="https://angel.co" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Crunchbase</h3>
+                        <p>Discover innovative companies and the people behind them with detailed funding data.</p>
+                        <a href="https://www.crunchbase.com" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>PitchBook</h3>
+                        <p>Comprehensive private market data for startups, investors, and M&A professionals.</p>
+                        <a href="https://pitchbook.com" target="_blank">Visit</a>
+                    </div>
+                </div>
+                <div class="view-all">
+                    <a href="#">View All Startup Tools →</a>
+                </div>
+            </section>
+
+            <!-- WebHosting Section -->
+            <section id="webhosting">
+                <h2 class="section-title">WebHosting</h2>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <h3>Vercel</h3>
+                        <p>Cloud platform for static sites and Serverless Functions with automatic scaling.</p>
+                        <a href="https://vercel.com" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Netlify</h3>
+                        <p>All-in-one platform for automating modern web projects with continuous deployment.</p>
+                        <a href="https://www.netlify.com" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>DigitalOcean</h3>
+                        <p>Simple cloud hosting with predictable pricing and developer-friendly tools.</p>
+                        <a href="https://www.digitalocean.com" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Render</h3>
+                        <p>Unified cloud to build and run all your apps and websites with free SSL.</p>
+                        <a href="https://render.com" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Fly.io</h3>
+                        <p>Deploy app servers close to your users with global edge hosting.</p>
+                        <a href="https://fly.io" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Railway</h3>
+                        <p>Instant deployments with infrastructure automation and scaling.</p>
+                        <a href="https://railway.app" target="_blank">Visit</a>
+                    </div>
+                </div>
+                <div class="view-all">
+                    <a href="#">View All WebHosting Tools →</a>
+                </div>
+            </section>
+
+            <!-- Digital Marketing Section -->
+            <section id="marketing-tools">
+                <h2 class="section-title">Digital Marketing</h2>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <h3>HubSpot</h3>
+                        <p>All-in-one marketing, sales, and service software with powerful automation.</p>
+                        <a href="https://www.hubspot.com" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Mailchimp</h3>
+                        <p>Email marketing and automation platform with audience insights.</p>
+                        <a href="https://mailchimp.com" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>SEMrush</h3>
+                        <p>Complete SEO and marketing toolkit for visibility and content marketing.</p>
+                        <a href="https://www.semrush.com" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>ActiveCampaign</h3>
+                        <p>Customer experience automation with email marketing and CRM.</p>
+                        <a href="https://www.activecampaign.com" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>ConvertKit</h3>
+                        <p>Email marketing for creators with automation and landing pages.</p>
+                        <a href="https://convertkit.com" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Buffer</h3>
+                        <p>Social media management platform with scheduling and analytics.</p>
+                        <a href="https://buffer.com" target="_blank">Visit</a>
+                    </div>
+                </div>
+                <div class="view-all">
+                    <a href="#">View All Marketing Tools →</a>
+                </div>
+            </section>
+
+            <!-- AI Tools Section -->
+            <section id="ai-tools">
+                <h2 class="section-title">AI Tools</h2>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <h3>ChatGPT</h3>
+                        <p>Advanced conversational AI for content creation and problem solving.</p>
+                        <a href="https://chat.openai.com" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Midjourney</h3>
+                        <p>Cutting-edge AI image generation from text prompts.</p>
+                        <a href="https://www.midjourney.com" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Notion AI</h3>
+                        <p>AI-powered workspace for notes, tasks, wikis, and databases.</p>
+                        <a href="https://www.notion.so/product/ai" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>ElevenLabs</h3>
+                        <p>Most realistic AI voice generation and text-to-speech technology.</p>
+                        <a href="https://elevenlabs.io" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Runway ML</h3>
+                        <p>Creative suite with AI tools for video editing and image generation.</p>
+                        <a href="https://runwayml.com" target="_blank">Visit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>GitHub Copilot</h3>
+                        <p>AI pair programmer that suggests code in real-time.</p>
+                        <a href="https://github.com/features/copilot" target="_blank">Visit</a>
+                    </div>
+                </div>
+                <div class="view-all">
+                    <a href="#">View All AI Tools →</a>
+                </div>
+            </section>
+
+            <!-- More sections would continue here... -->
+
+            <footer>
+                <button class="theme-toggle" id="themeToggle">
+                    <span>Toggle Dark Mode</span>
+                </button>
+                <p>&copy; 2023 ToolMatrix. All rights reserved.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<span>Toggle Light Mode</span>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<span>Toggle Dark Mode</span>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<span>Toggle Light Mode</span>';
+        }
+
+        // Highlight active nav item
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
