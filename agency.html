@@ -34,7 +34,6 @@
             background-color: var(--light-bg);
             color: var(--light-text);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         body.dark-mode {
@@ -52,15 +51,8 @@
         /* Header */
         header {
             padding: var(--header-padding);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background-color: var(--light-bg);
-        }
-
-        body.dark-mode header {
-            background-color: var(--dark-bg);
+            position: relative;
+            z-index: 100;
         }
 
         .header-container {
@@ -123,46 +115,39 @@
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            min-height: 800px;
-            display: flex;
-            align-items: center;
+            padding: var(--section-padding);
             position: relative;
             overflow: hidden;
-            padding-top: 100px;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
-            animation: fadeInUp 1s ease-out;
+            max-width: 700px;
         }
 
         .hero h1 {
-            font-size: 64px;
-            margin-bottom: 30px;
+            font-size: 48px;
+            margin-bottom: 20px;
             color: var(--accent);
             line-height: 1.2;
-            font-weight: 700;
         }
 
         .hero p {
-            font-size: 22px;
-            margin-bottom: 40px;
+            font-size: 20px;
+            margin-bottom: 30px;
             color: var(--heading-color);
         }
 
         .btn {
             display: inline-block;
-            padding: 15px 40px;
+            padding: 12px 30px;
             background-color: var(--accent);
             color: white;
             text-decoration: none;
             border-radius: 30px;
             font-weight: 600;
             transition: transform 0.3s, box-shadow 0.3s;
-            animation: fadeIn 1.5s ease-out;
         }
 
         .btn:hover {
@@ -170,97 +155,29 @@
             box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
         }
 
-        .conversation-icons {
+        .hero-graphic {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
+            top: 50%;
+            right: 0;
+            width: 50%;
+            height: 80%;
+            transform: translateY(-50%);
+            opacity: 0.8;
             z-index: 1;
-            opacity: 0.1;
-            overflow: hidden;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><path fill="currentColor" d="M400,200c0,66.3-53.7,120-120,120s-120-53.7-120-120s53.7-120,120-120S400,133.7,400,200z M600,200c0,66.3-53.7,120-120,120s-120-53.7-120-120s53.7-120,120-120S600,133.7,600,200z M300,300c0,33.1-26.9,60-60,60s-60-26.9-60-60s26.9-60,60-60S300,266.9,300,300z M700,300c0,33.1-26.9,60-60,60s-60-26.9-60-60s26.9-60,60-60S700,266.9,700,300z M200,400c0,33.1-26.9,60-60,60s-60-26.9-60-60s26.9-60,60-60S200,366.9,200,400z M600,400c0,33.1-26.9,60-60,60s-60-26.9-60-60s26.9-60,60-60S600,366.9,600,400z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center right;
+            background-size: contain;
+            filter: brightness(0);
         }
 
-        .conversation-icon {
-            position: absolute;
-            font-size: 24px;
-            color: var(--heading-color);
-            animation: floatAround 15s linear infinite;
-        }
-
-        body.dark-mode .conversation-icon {
-            color: var(--dark-text);
-        }
-
-        @keyframes floatAround {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            25% {
-                transform: translate(50px, 50px) rotate(90deg);
-            }
-            50% {
-                transform: translate(100px, 0) rotate(180deg);
-            }
-            75% {
-                transform: translate(50px, -50px) rotate(270deg);
-            }
-            100% {
-                transform: translate(0, 0) rotate(360deg);
-            }
-        }
-
-        .social-icons-intro {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 80px;
-            flex-wrap: wrap;
-            animation: fadeIn 2s ease-out;
-        }
-
-        .social-icon {
-            font-size: 40px;
-            color: var(--heading-color);
-            transition: transform 0.3s;
-        }
-
-        body.dark-mode .social-icon {
-            color: var(--dark-text);
-        }
-
-        .social-icon:hover {
-            transform: translateY(-10px);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from { 
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
+        body.dark-mode .hero-graphic {
+            filter: brightness(1);
         }
 
         /* Why Section */
         .section {
             padding: var(--section-padding);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .section-title {
@@ -268,14 +185,6 @@
             font-size: 36px;
             margin-bottom: 50px;
             color: var(--heading-color);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s;
-        }
-
-        .section.visible .section-title {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .features {
@@ -289,20 +198,7 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-
-        .section.visible .feature-card {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .feature-card:nth-child(1) { transition-delay: 0.2s; }
-        .feature-card:nth-child(2) { transition-delay: 0.4s; }
-        .feature-card:nth-child(3) { transition-delay: 0.6s; }
-        .feature-card:nth-child(4) { transition-delay: 0.8s; }
 
         body.dark-mode .feature-card {
             background-color: var(--card-bg);
@@ -317,7 +213,7 @@
 
         /* Platforms */
         .platforms-section {
-            padding: 80px 0;
+            padding: 40px 0;
             background: linear-gradient(135deg, rgba(255,107,53,0.05) 0%, rgba(10,25,47,0.05) 100%);
             border-radius: 15px;
             margin: 40px 0;
@@ -350,20 +246,7 @@
             font-size: 18px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-
-        .section.visible .platform {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .platform:nth-child(1) { transition-delay: 0.2s; }
-        .platform:nth-child(2) { transition-delay: 0.4s; }
-        .platform:nth-child(3) { transition-delay: 0.6s; }
-        .platform:nth-child(4) { transition-delay: 0.8s; }
 
         .platform:hover {
             transform: translateY(-10px);
@@ -373,18 +256,12 @@
             font-size: 40px;
             margin-bottom: 15px;
             display: block;
+            color: var(--accent);
         }
-
-        .platform.instagram i { color: #E1306C; }
-        .platform.linkedin i { color: #0077B5; }
-        .platform.youtube i { color: #FF0000; }
-        .platform.camera i { color: #000000; }
-
-        body.dark-mode .platform.camera i { color: #ffffff; }
 
         /* Services */
         .services-section {
-            padding: 80px 0;
+            padding: 40px 0;
         }
 
         .services-grid {
@@ -398,22 +275,7 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-
-        .section.visible .service-card {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .service-card:nth-child(1) { transition-delay: 0.2s; }
-        .service-card:nth-child(2) { transition-delay: 0.4s; }
-        .service-card:nth-child(3) { transition-delay: 0.6s; }
-        .service-card:nth-child(4) { transition-delay: 0.8s; }
-        .service-card:nth-child(5) { transition-delay: 1.0s; }
-        .service-card:nth-child(6) { transition-delay: 1.2s; }
 
         body.dark-mode .service-card {
             background-color: var(--card-bg);
@@ -424,13 +286,6 @@
             font-size: 22px;
             margin-bottom: 15px;
             color: var(--accent);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .service-card i {
-            font-size: 28px;
         }
 
         /* About */
@@ -452,14 +307,6 @@
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .section.visible .about-container {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         body.dark-mode .about-container {
@@ -524,20 +371,7 @@
             padding: 25px;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-
-        .section.visible .faq-item {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .faq-item:nth-child(1) { transition-delay: 0.2s; }
-        .faq-item:nth-child(2) { transition-delay: 0.4s; }
-        .faq-item:nth-child(3) { transition-delay: 0.6s; }
-        .faq-item:nth-child(4) { transition-delay: 0.8s; }
 
         body.dark-mode .faq-item {
             background-color: var(--card-bg);
@@ -559,18 +393,10 @@
         /* CTA */
         .cta-section {
             background-color: var(--accent);
-            padding: 80px 0;
+            padding: 60px 0;
             text-align: center;
-            margin: 80px 0;
+            margin: 60px 0;
             border-radius: 10px;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .section.visible .cta-section {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .cta-section h2 {
@@ -594,14 +420,6 @@
         footer {
             text-align: center;
             padding: 50px 0 30px;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .section.visible footer {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .footer-social {
@@ -622,23 +440,13 @@
         }
 
         /* Responsive */
-        @media (max-width: 1200px) {
-            .hero h1 {
-                font-size: 56px;
-            }
-        }
-
         @media (max-width: 992px) {
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .hero h1 {
-                font-size: 48px;
-            }
-            
-            .hero p {
-                font-size: 20px;
+            .hero-graphic {
+                opacity: 0.3;
             }
         }
 
@@ -683,13 +491,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .hero {
-                min-height: 700px;
-                padding-top: 80px;
-            }
-            
             .hero h1 {
-                font-size: 42px;
+                font-size: 36px;
             }
             
             .section-title, .platforms-title {
@@ -700,16 +503,10 @@
             .about-container {
                 padding: 30px;
                 gap: 30px;
-                grid-template-columns: 1fr;
             }
             
-            .social-icons-intro {
-                margin-top: 50px;
-                gap: 20px;
-            }
-            
-            .social-icon {
-                font-size: 32px;
+            .hero-graphic {
+                display: none;
             }
         }
 
@@ -718,23 +515,12 @@
                 --section-padding: 50px 0;
             }
             
-            .hero {
-                min-height: 600px;
-                padding-top: 70px;
-            }
-            
             .hero h1 {
-                font-size: 36px;
-                margin-bottom: 20px;
+                font-size: 32px;
             }
             
             .hero p {
                 font-size: 18px;
-                margin-bottom: 30px;
-            }
-            
-            .btn {
-                padding: 12px 30px;
             }
             
             .social-links {
@@ -743,8 +529,8 @@
             }
             
             .cta-section {
-                padding: 60px 20px;
-                margin: 60px 0;
+                padding: 40px 20px;
+                margin: 40px 0;
             }
             
             .cta-section h2 {
@@ -781,7 +567,7 @@
     </header>
 
     <section class="hero">
-        <div class="conversation-icons" id="conversationIcons"></div>
+        <div class="hero-graphic"></div>
         <div class="container">
             <div class="hero-content">
                 <h1>Elevate your Personal Brand</h1>
@@ -789,17 +575,9 @@
                 <a href="#" class="btn">Get in Touch</a>
             </div>
         </div>
-        <div class="social-icons-intro">
-            <i class="fab fa-facebook-f social-icon"></i>
-            <i class="fab fa-twitter social-icon"></i>
-            <i class="fab fa-linkedin-in social-icon"></i>
-            <i class="fab fa-instagram social-icon"></i>
-            <i class="fab fa-youtube social-icon"></i>
-            <i class="fab fa-tiktok social-icon"></i>
-        </div>
     </section>
 
-    <section class="section" id="whySection">
+    <section class="section">
         <div class="container">
             <h2 class="section-title">Why inRushdigital</h2>
             <div class="features">
@@ -823,23 +601,23 @@
         </div>
     </section>
 
-    <section class="section" id="platformsSection">
+    <section class="platforms-section">
         <div class="container">
-            <h2 class="section-title">Personal Branding Platforms</h2>
+            <h2 class="platforms-title">Platforms</h2>
             <div class="platforms">
-                <div class="platform instagram">
+                <div class="platform">
                     <i class="fab fa-instagram"></i>
                     Instagram
                 </div>
-                <div class="platform linkedin">
+                <div class="platform">
                     <i class="fab fa-linkedin"></i>
                     LinkedIn
                 </div>
-                <div class="platform youtube">
+                <div class="platform">
                     <i class="fab fa-youtube"></i>
                     YouTube Podcast
                 </div>
-                <div class="platform camera">
+                <div class="platform">
                     <i class="fas fa-camera"></i>
                     Photo Shoots
                 </div>
@@ -847,39 +625,39 @@
         </div>
     </section>
 
-    <section class="section" id="servicesSection">
+    <section class="services-section">
         <div class="container">
             <h2 class="section-title">Digital Marketing Services</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <h3><i class="fas fa-chart-line"></i> Content Strategy</h3>
+                    <h3>Content Strategy</h3>
                     <p>Comprehensive content planning and calendar management tailored to your brand voice and goals.</p>
                 </div>
                 <div class="service-card">
-                    <h3><i class="fas fa-share-alt"></i> Social Media Management</h3>
+                    <h3>Social Media Management</h3>
                     <p>Full-service management of all major platforms including posting, engagement, and analytics.</p>
                 </div>
                 <div class="service-card">
-                    <h3><i class="fas fa-search"></i> SEO Optimization</h3>
+                    <h3>SEO Optimization</h3>
                     <p>Technical and content SEO to improve your online visibility and search rankings.</p>
                 </div>
                 <div class="service-card">
-                    <h3><i class="fas fa-envelope"></i> Email Marketing</h3>
+                    <h3>Email Marketing</h3>
                     <p>Design and execution of targeted email campaigns to nurture your audience.</p>
                 </div>
                 <div class="service-card">
-                    <h3><i class="fas fa-ad"></i> Paid Advertising</h3>
+                    <h3>Paid Advertising</h3>
                     <p>Strategic ad campaigns across social media and search platforms for maximum ROI.</p>
                 </div>
                 <div class="service-card">
-                    <h3><i class="fas fa-chart-pie"></i> Analytics & Reporting</h3>
+                    <h3>Analytics & Reporting</h3>
                     <p>Detailed performance tracking with actionable insights to refine your strategy.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="aboutSection">
+    <section class="about-section">
         <div class="container">
             <div class="about-container">
                 <div class="about-content">
@@ -901,7 +679,7 @@
         </div>
     </section>
 
-    <section class="section" id="faqSection">
+    <section class="faq-section">
         <div class="container">
             <h2 class="section-title">Frequently Asked Questions</h2>
             <div class="faq-container">
@@ -925,7 +703,7 @@
         </div>
     </section>
 
-    <section class="container" id="ctaSection">
+    <section class="container">
         <div class="cta-section">
             <h2>Ready to Make Your Mark?</h2>
             <p>Let's transform your expertise into influence and opportunities.</p>
@@ -933,7 +711,7 @@
         </div>
     </section>
 
-    <footer class="container" id="mainFooter">
+    <footer class="container">
         <p>inRushdigital (c) - 2025</p>
         <div class="footer-social">
             <a href="#"><i class="fab fa-linkedin" style="color: #0A66C2;"></i></a>
@@ -982,47 +760,6 @@
                 mainNav.classList.remove('active');
                 navToggle.innerHTML = '<i class="fas fa-bars"></i>';
             });
-        });
-        
-        // Create animated conversation icons
-        const conversationIcons = document.getElementById('conversationIcons');
-        const icons = ['💬', '🗣️', '👥', '💭', '📢', '📣', '🔊', '🔉', '🔈'];
-        
-        for (let i = 0; i < 30; i++) {
-            const icon = document.createElement('div');
-            icon.className = 'conversation-icon';
-            icon.textContent = icons[Math.floor(Math.random() * icons.length)];
-            icon.style.left = `${Math.random() * 100}%`;
-            icon.style.top = `${Math.random() * 100}%`;
-            icon.style.animationDuration = `${15 + Math.random() * 15}s`;
-            icon.style.animationDelay = `${Math.random() * 5}s`;
-            conversationIcons.appendChild(icon);
-        }
-        
-        // Scroll animation
-        const sections = document.querySelectorAll('.section');
-        const footer = document.getElementById('mainFooter');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-        
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-        
-        observer.observe(footer);
-        
-        // Make sure hero section is visible on load
-        window.addEventListener('load', () => {
-            document.querySelector('.hero-content').style.opacity = '1';
-            document.querySelector('.btn').style.opacity = '1';
         });
     </script>
 </body>
