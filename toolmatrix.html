@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TookMatrix - Futuristic AI Tools Directory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #ffffff;
+            --secondary-bg: #f8f9fa;
+            --text-color: #000000;
+            --accent-color: #00c853;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .dark-mode {
+            --primary-bg: #121212;
+            --secondary-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --accent-color: #00e676;
+            --card-shadow: 0 4px 12px rgba(0, 200, 83, 0.1);
+        }
+
+        body {
+            font-family: 'Instrument Sans', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 200, 83, 0.2);
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            background: linear-gradient(90deg, #00c853, #00e676);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #00c853, #00e676);
+            border-radius: 3px;
+        }
+
+        nav {
+            margin-top: 30px;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-menu li a:hover {
+            background-color: rgba(0, 200, 83, 0.1);
+            color: var(--accent-color);
+        }
+
+        .featured-section {
+            margin: 50px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, #00c853, #00e676);
+            border-radius: 3px;
+        }
+
+        .featured-tools {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .featured-tool {
+            background-color: var(--secondary-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .featured-tool:hover {
+            transform: translateY(-5px);
+        }
+
+        .featured-tool h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+
+        .featured-tool p {
+            margin-bottom: 15px;
+        }
+
+        .featured-tool a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .featured-tool a::after {
+            content: '→';
+            margin-left: 5px;
+            transition: transform 0.2s ease;
+        }
+
+        .featured-tool a:hover::after {
+            transform: translateX(3px);
+        }
+
+        .tools-section {
+            margin: 50px 0;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .tool-card {
+            background-color: var(--secondary-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 200, 83, 0.15);
+        }
+
+        .tool-card h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+
+        .tool-card p {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .tool-card a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .category-section {
+            margin: 60px 0;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--accent-color);
+        }
+
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 200, 83, 0.2);
+            margin-top: 50px;
+        }
+
+        .theme-toggle {
+            background-color: var(--secondary-bg);
+            border: none;
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Instrument Sans', sans-serif;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(0, 200, 83, 0.1);
+        }
+
+        @media (max-width: 1024px) {
+            .tools-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .featured-tools {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .featured-tools {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">TookMatrix</h1>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#text-tools">Text AI</a></li>
+                    <li><a href="#image-tools">Image AI</a></li>
+                    <li><a href="#video-tools">Video AI</a></li>
+                    <li><a href="#audio-tools">Audio AI</a></li>
+                    <li><a href="#code-tools">Code AI</a></li>
+                    <li><a href="#productivity-tools">Productivity</a></li>
+                    <li><a href="#marketing-tools">Marketing</a></li>
+                    <li><a href="#business-tools">Business</a></li>
+                    <li><a href="#research-tools">Research</a></li>
+                    <li><a href="#creative-tools">Creative</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="featured-section">
+            <h2 class="section-title">Featured Tools</h2>
+            <div class="featured-tools">
+                <div class="featured-tool">
+                    <h3>ChatGPT-4</h3>
+                    <p>Advanced conversational AI with multimodal capabilities for text, image, and code generation.</p>
+                    <a href="https://chat.openai.com" target="_blank">Visit Tool</a>
+                </div>
+                <div class="featured-tool">
+                    <h3>Midjourney</h3>
+                    <p>Cutting-edge AI image generator creating stunning visuals from text prompts.</p>
+                    <a href="https://www.midjourney.com" target="_blank">Visit Tool</a>
+                </div>
+                <div class="featured-tool">
+                    <h3>Runway ML</h3>
+                    <p>Creative suite with AI tools for video editing, image generation, and more.</p>
+                    <a href="https://runwayml.com" target="_blank">Visit Tool</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="tools-section">
+            <h2 class="section-title">Tools</h2>
+            <div class="tools-grid">
+                <!-- Text AI Tools -->
+                <div class="tool-card">
+                    <h3>GPT-4</h3>
+                    <p>Most advanced AI language model by OpenAI.</p>
+                    <a href="https://openai.com/gpt-4" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Claude</h3>
+                    <p>AI assistant focused on helpful, harmless, and honest responses.</p>
+                    <a href="https://www.anthropic.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Bard</h3>
+                    <p>Google's conversational AI with internet connectivity.</p>
+                    <a href="https://bard.google.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Jasper</h3>
+                    <p>AI writing assistant for marketing copy and content.</p>
+                    <a href="https://www.jasper.ai" target="_blank">Explore</a>
+                </div>
+
+                <!-- Image AI Tools -->
+                <div class="tool-card">
+                    <h3>DALL-E 3</h3>
+                    <p>OpenAI's advanced text-to-image generation system.</p>
+                    <a href="https://openai.com/dall-e" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Stable Diffusion</h3>
+                    <p>Open-source text-to-image generation model.</p>
+                    <a href="https://stablediffusionweb.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Leonardo AI</h3>
+                    <p>AI art generation platform with fine-tuned models.</p>
+                    <a href="https://leonardo.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Adobe Firefly</h3>
+                    <p>Creative generative AI tools integrated with Adobe products.</p>
+                    <a href="https://www.adobe.com/sensei/generative-ai/firefly.html" target="_blank">Explore</a>
+                </div>
+
+                <!-- Video AI Tools -->
+                <div class="tool-card">
+                    <h3>Synthesia</h3>
+                    <p>Create AI videos with virtual presenters.</p>
+                    <a href="https://www.synthesia.io" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Pika Labs</h3>
+                    <p>Generate and edit videos with AI.</p>
+                    <a href="https://pika.art" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>HeyGen</h3>
+                    <p>AI video generation with avatar presenters.</p>
+                    <a href="https://www.heygen.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Kaiber</h3>
+                    <p>AI-powered video creation and animation.</p>
+                    <a href="https://kaiber.ai" target="_blank">Explore</a>
+                </div>
+
+                <!-- Audio AI Tools -->
+                <div class="tool-card">
+                    <h3>ElevenLabs</h3>
+                    <p>Most realistic AI voice generator.</p>
+                    <a href="https://elevenlabs.io" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Murf AI</h3>
+                    <p>AI voice generator for professional voiceovers.</p>
+                    <a href="https://murf.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Boomy</h3>
+                    <p>Create original music with AI in seconds.</p>
+                    <a href="https://boomy.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Voicemod</h3>
+                    <p>Real-time AI voice changer and soundboard.</p>
+                    <a href="https://www.voicemod.net" target="_blank">Explore</a>
+                </div>
+
+                <!-- Code AI Tools -->
+                <div class="tool-card">
+                    <h3>GitHub Copilot</h3>
+                    <p>AI pair programmer that suggests code.</p>
+                    <a href="https://github.com/features/copilot" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Tabnine</h3>
+                    <p>AI assistant for software development.</p>
+                    <a href="https://www.tabnine.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Replit Ghostwriter</h3>
+                    <p>AI that helps you code in the browser.</p>
+                    <a href="https://replit.com/site/ghostwriter" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Amazon CodeWhisperer</h3>
+                    <p>ML-powered coding companion from AWS.</p>
+                    <a href="https://aws.amazon.com/codewhisperer" target="_blank">Explore</a>
+                </div>
+
+                <!-- Productivity Tools -->
+                <div class="tool-card">
+                    <h3>Notion AI</h3>
+                    <p>AI-powered workspace for notes, tasks, and databases.</p>
+                    <a href="https://www.notion.so/product/ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Mem</h3>
+                    <p>AI-powered notes that organize themselves.</p>
+                    <a href="https://get.mem.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Rewind AI</h3>
+                    <p>AI that records and indexes everything you see.</p>
+                    <a href="https://www.rewind.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Motion</h3>
+                    <p>AI-powered calendar and scheduling assistant.</p>
+                    <a href="https://www.usemotion.com" target="_blank">Explore</a>
+                </div>
+
+                <!-- Marketing Tools -->
+                <div class="tool-card">
+                    <h3>Copy.ai</h3>
+                    <p>AI-powered copywriting for marketing.</p>
+                    <a href="https://www.copy.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Jasper</h3>
+                    <p>AI content creation for marketing teams.</p>
+                    <a href="https://www.jasper.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Phrasee</h3>
+                    <p>AI-powered marketing language optimization.</p>
+                    <a href="https://phrasee.co" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>AdCreative.ai</h3>
+                    <p>AI-generated ad creatives and social media posts.</p>
+                    <a href="https://www.adcreative.ai" target="_blank">Explore</a>
+                </div>
+
+                <!-- Business Tools -->
+                <div class="tool-card">
+                    <h3>ChatGPT Enterprise</h3>
+                    <p>AI assistant for business with enhanced security.</p>
+                    <a href="https://openai.com/enterprise" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Gong</h3>
+                    <p>AI-powered revenue intelligence platform.</p>
+                    <a href="https://www.gong.io" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Beautiful.ai</h3>
+                    <p>AI-powered presentation software.</p>
+                    <a href="https://www.beautiful.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Otter.ai</h3>
+                    <p>AI-powered meeting assistant with transcription.</p>
+                    <a href="https://otter.ai" target="_blank">Explore</a>
+                </div>
+
+                <!-- Research Tools -->
+                <div class="tool-card">
+                    <h3>Elicit</h3>
+                    <p>AI research assistant for literature review.</p>
+                    <a href="https://elicit.org" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Consensus</h3>
+                    <p>AI-powered search engine for research.</p>
+                    <a href="https://consensus.app" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Scite</h3>
+                    <p>AI assistant for scientific research.</p>
+                    <a href="https://scite.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Scholarcy</h3>
+                    <p>AI-powered article summarizer for research.</p>
+                    <a href="https://www.scholarcy.com" target="_blank">Explore</a>
+                </div>
+
+                <!-- Creative Tools -->
+                <div class="tool-card">
+                    <h3>Canva Magic Studio</h3>
+                    <p>AI-powered design tools within Canva.</p>
+                    <a href="https://www.canva.com/magic-studio" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Adobe Sensei</h3>
+                    <p>AI and machine learning for creative workflows.</p>
+                    <a href="https://www.adobe.com/sensei.html" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Vizrt</h3>
+                    <p>AI-powered graphics and video production tools.</p>
+                    <a href="https://www.vizrt.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Artbreeder</h3>
+                    <p>Create and explore AI-generated art.</p>
+                    <a href="https://www.artbreeder.com" target="_blank">Explore</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Sections -->
+        <section id="text-tools" class="category-section">
+            <h2 class="category-title">Text AI Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>ChatGPT</h3>
+                    <p>Conversational AI for various text tasks.</p>
+                    <a href="https://chat.openai.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Claude</h3>
+                    <p>AI assistant focused on helpful responses.</p>
+                    <a href="https://www.anthropic.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Bard</h3>
+                    <p>Google's conversational AI with internet.</p>
+                    <a href="https://bard.google.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Perplexity AI</h3>
+                    <p>AI-powered answer engine with sources.</p>
+                    <a href="https://www.perplexity.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Writer</h3>
+                    <p>AI writing assistant for businesses.</p>
+                    <a href="https://writer.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Jasper</h3>
+                    <p>AI content creation for marketing.</p>
+                    <a href="https://www.jasper.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Copy.ai</h3>
+                    <p>AI copywriting for marketing.</p>
+                    <a href="https://www.copy.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Writesonic</h3>
+                    <p>AI writer for blogs and ads.</p>
+                    <a href="https://writesonic.com" target="_blank">Explore</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="image-tools" class="category-section">
+            <h2 class="category-title">Image AI Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>Midjourney</h3>
+                    <p>Advanced AI image generation.</p>
+                    <a href="https://www.midjourney.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>DALL-E 3</h3>
+                    <p>OpenAI's text-to-image system.</p>
+                    <a href="https://openai.com/dall-e" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Stable Diffusion</h3>
+                    <p>Open-source image generation.</p>
+                    <a href="https://stablediffusionweb.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Leonardo AI</h3>
+                    <p>AI art generation platform.</p>
+                    <a href="https://leonardo.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Adobe Firefly</h3>
+                    <p>Generative AI for creatives.</p>
+                    <a href="https://www.adobe.com/sensei/generative-ai/firefly.html" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Runway ML</h3>
+                    <p>Creative AI tools suite.</p>
+                    <a href="https://runwayml.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Playground AI</h3>
+                    <p>Free online AI image creator.</p>
+                    <a href="https://playgroundai.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Dream by Wombo</h3>
+                    <p>AI-powered art creation.</p>
+                    <a href="https://dream.ai" target="_blank">Explore</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="video-tools" class="category-section">
+            <h2 class="category-title">Video AI Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>Synthesia</h3>
+                    <p>AI videos with virtual presenters.</p>
+                    <a href="https://www.synthesia.io" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>HeyGen</h3>
+                    <p>AI video generation with avatars.</p>
+                    <a href="https://www.heygen.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Pika Labs</h3>
+                    <p>Generate and edit videos with AI.</p>
+                    <a href="https://pika.art" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Runway ML</h3>
+                    <p>AI video editing tools.</p>
+                    <a href="https://runwayml.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Kaiber</h3>
+                    <p>AI video creation and animation.</p>
+                    <a href="https://kaiber.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Descript</h3>
+                    <p>AI-powered video and podcast editing.</p>
+                    <a href="https://www.descript.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Fliki</h3>
+                    <p>Text to video with AI voices.</p>
+                    <a href="https://fliki.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>InVideo</h3>
+                    <p>AI-assisted video creation.</p>
+                    <a href="https://invideo.io" target="_blank">Explore</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="audio-tools" class="category-section">
+            <h2 class="category-title">Audio AI Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>ElevenLabs</h3>
+                    <p>Realistic AI voice generator.</p>
+                    <a href="https://elevenlabs.io" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Murf AI</h3>
+                    <p>Professional AI voiceovers.</p>
+                    <a href="https://murf.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Boomy</h3>
+                    <p>Create original music with AI.</p>
+                    <a href="https://boomy.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Voicemod</h3>
+                    <p>Real-time AI voice changer.</p>
+                    <a href="https://www.voicemod.net" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Resemble AI</h3>
+                    <p>Clone voices with AI.</p>
+                    <a href="https://www.resemble.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>LALAL.AI</h3>
+                    <p>AI vocal remover and stem splitter.</p>
+                    <a href="https://www.lalal.ai" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Adobe Podcast</h3>
+                    <p>AI-powered audio enhancement.</p>
+                    <a href="https://podcast.adobe.com" target="_blank">Explore</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Audo.ai</h3>
+                    <p>AI noise removal and audio cleanup.</p>
+                    <a href="https://www.audo.ai" target="_blank">Explore</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional category sections would continue here... -->
+    </main>
+
+    <footer>
+        <div class="container">
+            <button class="theme-toggle" id="themeToggle">
+                <span>Toggle Dark Mode</span>
+            </button>
+            <p>&copy; 2023 TookMatrix. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<span>Toggle Light Mode</span>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<span>Toggle Dark Mode</span>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<span>Toggle Light Mode</span>';
+        }
+    </script>
+</body>
+</html>
